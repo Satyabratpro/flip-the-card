@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Flip Card – Satyabrat Demo</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ====== GLOBALS ====== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top left, #202022 0%, #111 70%);
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* ====== CARD LAYERS ====== */
+    .card-container {
+      perspective: 1000px;
+      /* enables 3-D */
+    }
+
+    .card {
+      position: relative;
+      width: 280px;
+      height: 180px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      border-radius: 20px;
+    }
+
+    /* flip on hover */
+    .card-container:hover .card {
+      transform: rotateY(180deg);
+    }
+
+    /* ====== FACES ====== */
+    .front,
+    .back {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    /* front face */
+    .front {
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+    }
+
+    .front img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+      object-fit: cover;
+    }
+
+    .front h2 {
+      font-weight: 600;
+      font-size: 22px;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+    }
+
+    /* back face */
+    .back {
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      transform: rotateY(180deg);
+      padding: 0 20px;
+    }
+
+    .back p {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .back a {
+      margin-top: 6px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+    }
+
+    .back a:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ====== CARD MARKUP ====== -->
+  <div class="card-container">
+    <div class="card">
+      <!-- FRONT -->
+      <div class="front">
+        <!-- ✅ Replace with your own profile photo -->
+        <img src="images/akatsuki.jpg" alt="Profile" />
+        <h2>Satyabrat Behera</h2>
+      </div>
+
+      <!-- BACK -->
+      <div class="back">
+        <p>"hello my name is Satya a full stack web dev💻📱"</p>
+        <!-- ✅ Replace with your own handle / link -->
+        <a href="https://github.com/Satyabratpro" target="_blank">@Satyabratpro</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
